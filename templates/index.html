@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    {% extends "base.html" %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>To-Do List</title>
+    <main>
+        {% block content %}
+            <h1>{{ title }}</h1>
+            {% for task in tasks %}
+                <p>{{ task.description }} - {{ task.completed }}</p>
+            {% endfor %}
+            <button onclick="showAddForm()">Добавить задачу</button>
+            <button onclick="showCompleteForm()">Выполнить задачу</button>
+            <button onclick="showDeleteForm()">Удалить задачу</button>
+            <div id="task-list">
+                {% for task in tasks %}
+                    <div class="task">{{ task.description }}</div>
+                {% endfor %}
+            </div>
+        {% endblock %}
+    </main>
+</html>
