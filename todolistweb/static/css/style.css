@@ -1,0 +1,52 @@
+h1 {
+    text-align: center;
+}
+
+.controls {
+    text-align: center; /* Выравнивание по центру */
+    margin: 20px 0;
+}
+
+    .controls button {
+        margin: 0 10px; /* Отступы между кнопками */
+        padding: 10px 20px;
+    }
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+.task {
+    margin: 10px 0;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.task-number {
+    font-weight: bold;
+    color: #666;
+    margin-right: 8px;
+}
+
+.delete-btn {
+    margin-left: auto; /* Прижимает кнопку к правому краю */
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.delete-btn:hover {
+    background: #cc0000;
+}
