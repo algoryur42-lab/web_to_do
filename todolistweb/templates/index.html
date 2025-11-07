@@ -6,37 +6,27 @@
 <main>
     {% block content %}
     <h1>{{ title }}</h1>
-    <div class="controls">
-        <button onclick="showAddForm()">Добавить задачу</button>
-        <button onclick="showCompleteForm()">Выполнить задачу</button>
+    <div id="add-form" class="modal" style="display:block;">
+        <form method="POST" action="{{ url_for('add_task') }}">
+            <input class="input-task" type="text" name="task_description" placeholder="Введите задачу" required>
+            <button type="submit">Добавить</button>
+        </form>
     </div>
     <div id="task-list">
         {% for task in tasks %}
         <div class="task">
-            <span class = "task-number">{{loop.index}}.</span>
+            <span class="task-number">{{loop.index}}.</span>
+            <form class="complete_box" method="POST" action="{{ url_for('complete_task_form', task_id = loop.index0) }}">
+                <input type="checkbox" onchange="this.form.submit()" name='completed' value="True" {% if task.completed %}checked{% endif %}>
+            </form>
             {% if task.completed %}
             <s>{{ task.description }}</s>
             {% else %}
             {{ task.description }}
             {% endif %}
-            <button class="delete-btn" onclcik="deleteTask"({{loop.index0}})>x</button>
+            <a class="delete-link" href="{{ url_for('delete_task', task_id = loop.index0) }}">❌</a>
         </div>
         {% endfor %}
-    </div>
-    <!-- Модальные окна -->
-    <div id="add-form" class="modal" style="display:none;">
-        <form method="POST" action="{{ url_for('add_task') }}">
-            <input type="text" name="task_description" placeholder="Введите задачу" required>
-            <button type="submit">Добавить</button>
-            <button type="button" onclick="hideAddForm()">Отмена</button>
-        </form>
-    </div>
-    <div id="complete-form" class="modal" style="display:none;">
-        <form method="POST" action="{{ url_for('complete_task_form') }}">
-            <input type="number" name="task_id" placeholder="Номер задачи" required>
-            <button type="submit">Выполнить</button>
-            <button type="button" onclick="hideCompleteForm()">Отмена</button>
-        </form>
     </div>
     {% endblock %}
 </main>

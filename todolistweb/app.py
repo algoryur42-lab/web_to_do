@@ -14,11 +14,10 @@ def add_task():
     tasks.append({'description': description, 'completed': False})
     return redirect(url_for('index'))
 
-@app.route('/complete_task', methods=['POST'])
-def complete_task_form():
-    task_id = int(request.form.get('task_id'))-1
+@app.route('/complete_task/<int:task_id>', methods=['POST'])
+def complete_task_form(task_id):
     if 0 <= task_id < len(tasks):
-        tasks[task_id]['completed'] = True
+        tasks[task_id]['completed'] = True if request.form.get('completed') else False
     return redirect(url_for('index'))
 
 @app.route('/delete/<int:task_id>')

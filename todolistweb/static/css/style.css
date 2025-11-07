@@ -2,39 +2,46 @@ h1 {
     text-align: center;
 }
 
-.controls {
-    text-align: center; /* Выравнивание по центру */
-    margin: 20px 0;
-}
-
-    .controls button {
-        margin: 0 10px; /* Отступы между кнопками */
-        padding: 10px 20px;
-    }
-
 .modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 70px;
+    left: 15px;
     background: white;
     padding: 20px;
-    border: 1px solid #ccc;
 }
 
+.input-task {
+    height: 25px;
+    width: 350px;
+}
 .task {
     margin: 10px 0;
     padding: 8px;
+    position: relative;
+    top: 50px;
     border-bottom: 1px solid #eee;
+}
+
+.complete_box {
+    display: flex;
+    float: left;
+    position: relative;
+    top: 2px; 
 }
 
 .task-number {
     font-weight: bold;
     color: #666;
     margin-right: 8px;
+    display: flex;
+    float: left;
+    position: relative;
+    top: 3px;
 }
 
-.delete-btn {
+
+
+.delete-link {
     margin-left: auto; /* Прижимает кнопку к правому краю */
     background: #ff4444;
     color: white;
@@ -44,9 +51,11 @@ h1 {
     height: 24px;
     cursor: pointer;
     font-size: 16px;
-    line-height: 1;
+    text-decoration: none;
+    padding:3px 1px 3px;
 }
 
-.delete-btn:hover {
+.delete-link:hover {
     background: #cc0000;
 }
+
