@@ -2,9 +2,6 @@
   "ExpandedNodes": [
     "",
     "\\todolistweb",
-    "\\todolistweb\\static",
-    "\\todolistweb\\static\\css",
-    "\\todolistweb\\static\\js",
     "\\todolistweb\\templates"
   ],
   "SelectedNode": "\\todolistweb\\app.py",

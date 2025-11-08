@@ -59,3 +59,7 @@ h1 {
     background: #cc0000;
 }
 
+.flash {
+    transition: display 3 linear;
+    display: none;
+}

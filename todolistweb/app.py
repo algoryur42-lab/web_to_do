@@ -14,9 +14,11 @@ def add_task():
     description = request.form.get('task_description')
     existing_description = [task['description'] for task in tasks]
     if description in existing_description:
-        return render_template(flash('Данная задача уже добавлена!', 'description already existing'))
+        flash('Такая задача уже существует!', 'error')
+        
     else:
         tasks.append({'description': description, 'completed': False})
+        flash('Задача добавлена!', 'success')
     return redirect(url_for('index'))
 
 @app.route('/complete_task/<int:task_id>', methods=['POST'])

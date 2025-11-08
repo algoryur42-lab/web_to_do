@@ -5,6 +5,15 @@
 <title>To-Do List</title>
 <main>
     {% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for message in messages %}
+                <div class="flash">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
     <h1>{{ title }}</h1>
     <div id="add-form" class="modal" style="display:block;">
         <form method="POST" action="{{ url_for('add_task') }}">

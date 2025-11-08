@@ -1,3 +1,4 @@
 {
-  "Interpreter": "Workspace|Workspace|todovenv"
+  "Interpreter": "Workspace|Workspace|todovenv",
+  "SuppressConfigureTestFrameworkPrompt": "true"
 }
