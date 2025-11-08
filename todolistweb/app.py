@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, flash, render_template, request, redirect, url_for
 
 app = Flask(__name__)
+app.secret_key = 'my_secret_key_aboba'
 
 tasks = []
 
@@ -13,7 +14,7 @@ def add_task():
     description = request.form.get('task_description')
     existing_description = [task['description'] for task in tasks]
     if description in existing_description:
-        return render_template(flash(''))
+        return render_template(flash('Данная задача уже добавлена!', 'description already existing'))
     else:
         tasks.append({'description': description, 'completed': False})
     return redirect(url_for('index'))
