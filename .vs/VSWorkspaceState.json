@@ -3,7 +3,9 @@
     "",
     "\\todolistweb",
     "\\todolistweb\\static",
-    "\\todolistweb\\static\\js"
+    "\\todolistweb\\static\\css",
+    "\\todolistweb\\static\\js",
+    "\\todolistweb\\templates"
   ],
   "SelectedNode": "\\todolistweb\\app.py",
   "PreviewInSolutionExplorer": false
