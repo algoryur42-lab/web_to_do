@@ -1,7 +1,9 @@
 from flask import Flask, flash, render_template, request, redirect, url_for
 
 app = Flask(__name__)
-app.secret_key = 'my_secret_key_aboba'
+app.secret_key = 'my_secret_key_aboba_v_prime'
+app.config['JSON_AS_ASCII'] = False
+app.config['ENCODING'] = 'utf-8'
 
 tasks = []
 
@@ -12,13 +14,11 @@ def index():
 @app.route('/add', methods=['POST'])
 def add_task():
     description = request.form.get('task_description')
-    existing_description = [task['description'] for task in tasks]
-    if description in existing_description:
+    error = None
+    if any(task['description'] == description for task in tasks):
         flash('Такая задача уже существует!', 'error')
-        
     else:
         tasks.append({'description': description, 'completed': False})
-        flash('Задача добавлена!', 'success')
     return redirect(url_for('index'))
 
 @app.route('/complete_task/<int:task_id>', methods=['POST'])
@@ -27,11 +27,11 @@ def complete_task_form(task_id):
         tasks[task_id]['completed'] = True if request.form.get('completed') else False
     return redirect(url_for('index'))
 
-@app.route('/delete/<int:task_id>')
+@app.route('/delete/<int:task_id>', methods=['POST'])
 def delete_task(task_id):
     if 0 <= task_id < len(tasks):
         del tasks[task_id]
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
