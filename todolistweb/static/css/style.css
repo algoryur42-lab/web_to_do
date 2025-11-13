@@ -14,19 +14,26 @@ h1 {
     height: 25px;
     width: 350px;
 }
+
 .task {
     margin: 10px 0;
     padding: 8px;
     position: relative;
     top: 50px;
     border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    align-content: center;
 }
 
 .complete_box {
     display: flex;
     float: left;
-    position: relative;
-    top: 2px; 
+}
+
+.complete_box input {
+    width: 15px;
+    height: 15px;
 }
 
 .task-number {
@@ -35,31 +42,36 @@ h1 {
     margin-right: 8px;
     display: flex;
     float: left;
+}
+.task-text {
+    font-size: 18px;
     position: relative;
-    top: 3px;
+    top: 1px;
+    word-break: break-word;
 }
 
-
-
-.delete-link {
-    margin-left: auto; /* Прижимает кнопку к правому краю */
-    background: #ff4444;
+.delete-form {
+    margin-right: auto; /* РџСЂРёР¶РёРјР°РµС‚ С„РѕСЂРјСѓ Рє РїСЂР°РІРѕРјСѓ РєСЂР°СЋ */
+    margin-left: 10px;
     color: white;
-    border: none;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
     font-size: 16px;
-    text-decoration: none;
-    padding:3px 1px 3px;
+
 }
 
-.delete-link:hover {
-    background: #cc0000;
+.delete-btn {
+    border: 1px solid rgb(100,100,100);
+    background-image: radial-gradient(circle, rgb(128, 128, 128), rgb(190,190,190));
+    box-shadow: 0 0 0 white;
+    font-size: 8px;
+    text-align: center;
+    border-radius: 20%;
+    padding: 2px;
 }
 
-.flash {
-    transition: display 3 linear;
-    display: none;
+.delete-btn:hover {
+    background-color: #666;
+    border: 1px solid red;
 }
