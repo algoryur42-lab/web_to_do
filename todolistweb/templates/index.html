@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html>
     {% extends "base.html" %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 <title>To-Do List</title>
 <main>
     {% block content %}
     {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <div class="flash-messages">
-                {% for message in messages %}
-                <div class="flash">{{ message }}</div>
-                {% endfor %}
-            </div>
-        {% endif %}
+    {% if messages %}
+    <script>
+            alert('{{ messages[0] }}');
+    </script>
+    {% endif %}
     {% endwith %}
     <h1>{{ title }}</h1>
     <div id="add-form" class="modal" style="display:block;">
@@ -29,11 +26,13 @@
                 <input type="checkbox" onchange="this.form.submit()" name='completed' value="True" {% if task.completed %}checked{% endif %}>
             </form>
             {% if task.completed %}
-            <s>{{ task.description }}</s>
+            <s><span class="task-text">{{ task.description }}</span></s>
             {% else %}
-            {{ task.description }}
+            <span class="task-text">{{ task.description }}</span>
             {% endif %}
-            <a class="delete-link" href="{{ url_for('delete_task', task_id = loop.index0) }}">❌</a>
+            <form method="POST" action="{{ url_for('delete_task', task_id=loop.index0) }}" class="delete-form">
+                <button type="submit" class="delete-btn">❌</button>
+            </form>
         </div>
         {% endfor %}
     </div>
